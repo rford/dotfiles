@@ -1,0 +1,109 @@
+[{
+    "layer": "top",
+    "position": "top",
+    "height": 24,
+    "modules-left": ["sway/workspaces","sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["tray","mpd","idle_inhibitor", "pulseaudio", "temperature", "cpu", "memory", "clock", "custom/saskatoon"],
+    "sway/workspaces": {
+        "disable-scroll": true,
+    },
+	"sway/mode" : {
+		"format":"{}",
+	},
+	"wlr/taskbar" : {
+		"format": "{title}",
+		"on-click": "minimize-raise"
+	},
+    "tray": {
+        "spacing": 10,
+		"icon-size": 18
+    },
+    "clock": {
+		"interval":60,
+        "format": "{:%H:%M}",
+		"max-length":25
+    },
+    "custom/saskatoon": {
+        "format": "{}",
+		"return-type": "json",
+		"tooltip-format": "{tooltip}",
+        "exec": "/home/rford/.config/waybar/date.sh",
+        "interval": 30,
+    },
+    "cpu": {
+        "format": " {usage}%"
+    },
+    "memory": {
+        "format": " {}%"
+    },
+    "temperature": {
+		"hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 75,
+        "format": " {temperatureC}°C"
+    },
+    "battery": {
+        "bat": "BAT0",
+        "full-at": 95,
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        "format-wifi": " {essid}",
+        "format-disconnected": "⚠ Disconnected"
+    },
+	"idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+
+	},
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "�<9f><94><87>",
+        "format-icons": {
+            "headphone": "🎧",
+            "default": "🔊"
+        },
+        "on-click": "pavucontrol"
+    },
+	"mpd": {
+		"server":"127.0.0.1",
+		"format": "{stateIcon} {title} ",
+		"format-disconnected": "Disconnected ",
+		"format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped",
+		"interval": 10,
+		"consume-icons": {
+			"on": " " // Icon shows only when "consume" is on
+		},
+		"random-icons": {
+		"off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random"is off
+		"on": " "
+		},
+		"repeat-icons": {
+			"on": " "
+		},
+		"single-icons": {
+			"on": "1 "
+		},
+		"state-icons": {
+			"paused": "",
+			"playing": ""
+		},
+		"tooltip-format": "MPD (connected)",
+		"tooltip-format-disconnected": "MPD (disconnected)"
+	},
+},
+// second window
+{
+	
+}
+]
+
